@@ -28,8 +28,12 @@ export default {
   /*
   ** Global CSS
   */
-  css: [
-  ],
+ css: [
+  // CSS file in the project
+  '@/assets/css/main.css',
+  // SCSS file in the project
+  '@/assets/scss/main.scss'
+],
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
@@ -56,5 +60,10 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+    postcss: {
+      plugins: {
+        "postcss-custom-properties": false
+      }
+    }
   }
 }
