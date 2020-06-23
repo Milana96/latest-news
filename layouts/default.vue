@@ -6,16 +6,19 @@
       @close="displaySidenav = false"
     ></TheSidenav>
     <Nuxt />
+    <TheFooter></TheFooter>
   </div>
 </template>
 
 <script>
 import TheHeader from "@/components/Navigation/TheHeader.vue";
 import TheSidenav from "@/components/Navigation/TheSidenav.vue";
+import TheFooter from "@/components/Navigation/TheFooter.vue";
 export default {
   components: {
     TheHeader,
-    TheSidenav
+    TheSidenav,
+    TheFooter
   },
   data() {
     return {

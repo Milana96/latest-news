@@ -1,0 +1,5 @@
+@import "contact";
+@import "../base/mixins";
+.container {
+    @include container;
+}
