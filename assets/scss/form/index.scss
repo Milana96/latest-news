@@ -1,0 +1,66 @@
+@import "../base/variables";
+.input-control {
+  margin: 10px 0;
+}
+
+.input-control label {
+  display: block;
+  font-weight: bold;
+}
+
+.input-control input,
+.input-control textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+.input-control input:focus,
+.input-control textarea:focus {
+  background-color: #eee;
+  outline: none;
+}
+
+.button {
+  font: inherit;
+  background-color: $dark_grey;
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+  border: 1px solid $dark_grey;
+}
+
+.button:hover,
+.button:active {
+  background-color: $primary_theme_color;
+  border: 1px solid black;
+}
+
+.inverted {
+  background-color: white;
+  color: $dark_grey;
+  border: 1px solid transparent;
+}
+
+.inverted:hover,
+.inverted:active {
+  color: #ccc;
+  background-color: white;
+  border: 1px solid transparent;
+}
+
+.cancel {
+  background-color: $primary_theme_color;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.cancel:hover,
+.cancel:active {
+  background-color: salmon;
+  border: 1px solid transparent;
+  color: white;
+}
