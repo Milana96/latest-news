@@ -1,4 +1,13 @@
 @import "../base/variables";
+
+.admin-post-form {
+  width: 500px;
+  margin: 0 20px;
+    @include max-mq($sm) {
+      width: 100%;
+    }
+}
+
 .input-control {
   margin: 10px 0;
 }

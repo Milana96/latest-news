@@ -3,11 +3,12 @@
         <article class="post-preview">
              <div
                 class="post-preview-image"
-                :style="{backgroundImage: 'url(' + image +')'}"
-            ></div>
+                :style="{backgroundImage: 'url(' + image + ')'}">
+            </div>
             <div class="post-preview-content">
                 <h1>{{title}}</h1>
                 <p>{{previewText}}</p>
+                <small>{{author}}</small>
             </div>
         </article>
     </nuxt-link>
@@ -32,9 +33,13 @@ export default {
             type: String,
             required: true
         },
+        author: {
+            type: String,
+            required: true
+        },
         isAdmin: {
             type: Boolean,
-            required: false
+            required: true
         }
     },
     computed: {

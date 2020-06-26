@@ -5,6 +5,7 @@
             :is-admin="isAdmin"
             :title="post.title"
             :image="post.image"
+            :author="post.author"
             :previewText="post.previewText"
         ></PostPreview>
     </div>

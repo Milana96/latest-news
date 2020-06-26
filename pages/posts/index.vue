@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <h1>TECH</h1>
+    <div class="featured-posts">
+        <h1 class="tech">TECH</h1>
         <p>The latest tech news about the world's best (and sometimes worst) hardware, apps, and much more. From top companies like Google and Apple to tiny startups vying for your attention, Verge Tech has the latest in what matters in technology daily.</p>
         <section class="existing-posts">
             <PostList :posts="loadedPosts"></PostList>

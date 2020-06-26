@@ -28,6 +28,10 @@ export default {
       required: false
     }
   },
+  created() {
+    console.log(this.post);
+    
+  },
   data() {
     return {
       editedPost: this.post
