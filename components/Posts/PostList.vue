@@ -1,5 +1,5 @@
 <template>
-    <div class="existing-posts">
+    <div class="existing-posts-preview">
         <PostPreview v-for="post in posts" :key="post.id"
             :id="post.id"
             :is-admin="isAdmin"

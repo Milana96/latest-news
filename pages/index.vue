@@ -1,28 +1,17 @@
 <template>
   <div>
-    <div class="home-page">
-      <img class="logo" src="~/assets/images/logo.png" alt="tech-logo">
-      <section class="intro">
-        <h1 class="tech">Get the latest tech news!</h1>
-        <p class="intro-text">The latest tech news about the world's best (and sometimes worst) hardware, apps, and much more. From top companies like Google and Apple to tiny startups vying for your attention, Verge Tech has the latest in what matters in technology daily.</p>
-      </section>
-      <a href="#existing-posts" class="btn btn-white btn-animated">Discover our news</a>
-    </div>
-    
-    <section class="existing-posts" id="existing-posts">
-      <PostList :posts="loadedPosts"></PostList>
-    </section>
+    <Posts/>
   </div>
 </template>
 
 <script>
+import Posts from './posts/index';
 export default {
-  computed: {
-    loadedPosts() {
-      return this.$store.getters.loadedPosts;
-    }
-  },
-}
+  layout: 'default',
+  components: {
+    Posts
+  }
+};
 </script>
 
 <style>

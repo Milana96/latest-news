@@ -44,7 +44,8 @@
 <script>
 import axios from "axios";
 export default {
-  middleware: ['check-auth', 'auth'],
+   // uncomment and fix later
+  // middleware: ['check-auth', 'auth'],
   data() {
     return {
       postID: ""
