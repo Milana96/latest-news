@@ -18,7 +18,7 @@ const auth = {
     SET_TOKEN(state, payload) {
       state.token = payload;
     },
-    CLEAR_TOKEN() {
+    CLEAR_TOKEN(state) {
       state.token = null;
     }
   },
