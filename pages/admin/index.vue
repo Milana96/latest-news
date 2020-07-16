@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="admin">
     <div class="home-page">
       <img class="logo" src="~/assets/images/logo.png" alt="tech-logo" />
       <section class="intro">
@@ -13,8 +13,14 @@
       </section>
     </div>
     <div class="featured-posts">
+      <h1 class="tech">ADMIN</h1>
+      <p class="create-post">
+        This is the place where you can create write the latest tech news 
+        about the hardware, apps and much more.
+      </p>
+       <AppButton @click="$router.push('/admin/new-post')">Create post</AppButton>
       <section class="existing-posts">
-        <PostList :posts="loadedPosts"></PostList>
+        <PostList isAdmin :posts="loadedPosts"></PostList>
       </section>
     </div>
   </div>
@@ -22,6 +28,8 @@
 
 <script>
 export default {
+  layout: "admin",
+  middleware: ['check-auth', 'auth'],
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts;
