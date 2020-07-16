@@ -1,36 +1,33 @@
 @import "../base/variables";
 
 .admin-post-form {
-  width: 500px;
+  width: 600px;
   margin: 0 20px;
-    @include max-mq($sm) {
-      width: 100%;
-    }
+  @include max-mq($sm) {
+    width: 100%;
+  }
 }
-
 .input-control {
-  margin: 10px 0;
-}
-
-.input-control label {
-  display: block;
-  font-weight: bold;
-}
-
-.input-control input,
-.input-control textarea {
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  font: inherit;
-  border: 1px solid #ccc;
-  padding: 5px;
-}
-
-.input-control input:focus,
-.input-control textarea:focus {
-  background-color: #eee;
-  outline: none;
+  margin: 20px 0;
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    font: inherit;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 8px 16px;
+    &:focus {
+      background-color: #eee;
+      outline: none;
+    }
+  }
 }
 
 .button {
@@ -40,36 +37,32 @@
   padding: 5px;
   cursor: pointer;
   border: 1px solid $dark_grey;
+  border-radius: 10px;
+  &:hover,
+  &:active {
+    background-color: $primary_theme_color;
+    border: 1px solid black;
+  }
 }
-
-.button:hover,
-.button:active {
-  background-color: $primary_theme_color;
-  border: 1px solid black;
-}
-
 .inverted {
   background-color: white;
   color: $dark_grey;
   border: 1px solid transparent;
+  &:hover,
+  &:active {
+    color: #ccc;
+    background-color: white;
+    border: 1px solid transparent;
+  }
 }
-
-.inverted:hover,
-.inverted:active {
-  color: #ccc;
-  background-color: white;
-  border: 1px solid transparent;
-}
-
 .cancel {
   background-color: $primary_theme_color;
   color: white;
   border: 1px solid transparent;
-}
-
-.cancel:hover,
-.cancel:active {
-  background-color: salmon;
-  border: 1px solid transparent;
-  color: white;
+  &:hover,
+  &:active {
+    background-color: salmon;
+    border: 1px solid transparent;
+    color: white;
+  }
 }

@@ -11,15 +11,22 @@ const createStore = () => {
       loadedPosts: []
     },
     mutations: {
-      setPosts(state, payload) {
+      SET_POSTS(state, payload) {
         state.loadedPosts = payload;
       },
-      addPost(state, payload) {
+      ADD_POST(state, payload) {
         state.loadedPosts.push(payload);
       },
-      editPost(state, payload) {
-        const postIndex = state.loadedPosts.findIndex(post => post.id === payload.id);
+      EDIT_POST(state, payload) {
+        const postIndex = state.loadedPosts.findIndex(
+          post => post.id === payload.id
+        );
         state.loadedPosts[postIndex] = payload;
+      },
+      REMOVE_POST(state, payload) {
+        state.loadedPosts = state.loadedPosts.filter(
+          post => post.id != payload
+        );
       }
     },
     actions: {
@@ -31,38 +38,68 @@ const createStore = () => {
             for (const key in result.data) {
               postsArray.push({ ...result.data[key], id: key });
             }
-            vuexContext.commit("setPosts", postsArray);
+            vuexContext.commit("SET_POSTS", postsArray);
           })
           .catch(err => {
             console.log(err);
           });
       },
+      // fetchPosts(vuexContext, commit) {
+      //   return axios
+      //     .get("https://latest-news-f9dc0.firebaseio.com/posts.json")
+      //     .then(result => {
+      //       var postsArray = [];
+      //       for (const key in result.data) {
+      //         postsArray.push({ ...result.data[key], id: key });
+      //       }
+      //       vuexContext.commit("SET_POSTS", postsArray);
+      //     })
+      //     .catch(err => {
+      //       console.log(err);
+      //     });
+      // },
       addPost(vuexContext, post) {
         const createdPost = {
           ...post,
           updatedData: new Date()
-        }
+        };
         return axios
-        .post("https://latest-news-f9dc0.firebaseio.com/posts.json", createdPost)
-        .then(result => {
-          vuexContext.commit('addPost', {...createdPost, id: result.data.name});
-        })
-        .catch(err => {
-          console.log(err);
-        });
+          .post(
+            "https://latest-news-f9dc0.firebaseio.com/posts.json",
+            createdPost
+          )
+          .then(result => {
+            vuexContext.commit("ADD_POST", {
+              ...createdPost,
+              id: result.data.name
+            });
+          })
+          .catch(err => {
+            console.log(err);
+          });
       },
       editPost(vuexContext, editedPost) {
         return axios
-        .put(
-          "https://latest-news-f9dc0.firebaseio.com/posts/" +
-            editedPost.id +
-            ".json",
-          editedPost
-        )
-        .then(res => {
-          vuexContext.commit('editPost', editedPost)
-        })
-        .catch(err => console.log(err));
+          .put(
+            "https://latest-news-f9dc0.firebaseio.com/posts/" +
+              editedPost.id +
+              ".json",
+            editedPost
+          )
+          .then(res => {
+            vuexContext.commit("EDIT_POST", editedPost);
+          })
+          .catch(err => console.log(err));
+      },
+      removePost(vuexContext, postID) {
+        axios
+          .delete(
+            "https://latest-news-f9dc0.firebaseio.com/posts/" + postID + ".json"
+          )
+          .then(res => {
+            vuexContext.commit("REMOVE_POST", postID);
+          })
+          .catch(e => console.log(e));
       }
     },
     getters: {

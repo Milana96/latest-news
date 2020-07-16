@@ -18,13 +18,21 @@
           >mailto:feedback@my-awesome-domain.com</a
         >
       </section>
-      <nuxt-link 
-        :to="{path: '/admin/edit', params: {id: $route.params.id}}"
-        class="edit">
-        <span>
-          <fa :icon="['fas', 'pencil-alt']" />
-        </span>
-      </nuxt-link>
+      <div class="icons">
+        <nuxt-link
+          :to="{ path: '/admin/edit', params: { id: $route.params.id } }"
+          class="icons-item"
+        >
+          <span>
+            <fa :icon="['fas', 'pencil-alt']" />
+          </span>
+        </nuxt-link>
+        <!-- <button > -->
+          <span @click="removePost">
+            <fa class="icons-item" :icon="['fa', 'trash']" />
+          </span>
+        <!-- </button> -->
+      </div>
     </section>
     <section class="other-posts">
       <h2 class="next-up">Next up in TECH</h2>
@@ -36,6 +44,12 @@
 <script>
 import axios from "axios";
 export default {
+  middleware: ['check-auth', 'auth'],
+  data() {
+    return {
+      postID: ""
+    };
+  },
   computed: {
     otherPosts() {
       return this.$store.getters.loadedPosts;
@@ -54,6 +68,13 @@ export default {
         };
       })
       .catch(e => context.error(e));
+  },
+  methods: {
+    removePost() {
+      this.$store.dispatch("removePost", this.$route.params.id).then(res => {
+        this.$router.push("/admin");
+      });
+    }
   }
 };
 </script>

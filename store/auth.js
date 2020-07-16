@@ -1,23 +1,98 @@
+import axios from "axios";
+import Cookie from "js-cookie";
 
 const auth = {
-    namespaced: true,
-  
-    state: {
-    
-    },
-  
-    getters: {
-     
-    },
-  
-    mutations: {
-     
-    },
-  
-    actions: {
-      
+  namespaced: true,
+
+  state: {
+    token: null
+  },
+
+  getters: {
+    isAuthenticated(state) {
+      return state.token != null;
     }
-  };
-  
-  export default auth;
-  
+  },
+
+  mutations: {
+    SET_TOKEN(state, payload) {
+      state.token = payload;
+    },
+    CLEAR_TOKEN() {
+      state.token = null;
+    }
+  },
+
+  actions: {
+    authenticateUser(vuexContext, authData) {
+      let authURL =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
+        process.env.fbAPIKey;
+      if (!authData.isLogin) {
+        authURL =
+          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" +
+          process.env.fbAPIKey;
+      }
+      return axios
+        .post(authURL, {
+          email: authData.email,
+          password: authData.password,
+          returnSecureToken: true
+        })
+        .then(result => {
+          console.log(result.data);
+          vuexContext.commit("SET_TOKEN", result.data.idToken);
+          localStorage.setItem("token", result.data.idToken);
+          localStorage.setItem(
+            "tokenExpiration",
+            new Date().getTime() + Number.parseInt(result.data.expiresIn) * 1000
+          );
+          Cookie.set("jwt", result.data.idToken);
+          Cookie.set(
+            "expirationDate",
+            new Date().getTime() + Number.parseInt(result.data.expiresIn) * 1000
+          );
+        })
+        .catch(e => console.log(e));
+    },
+    initAuth(vuexContext, req) {
+      let token, expirationDate;
+      if (req) {
+        if (!req.headers.cookie) {
+          return;
+        }
+        const jwtCookie = req.headers.cookie
+          .split(";")
+          .find(c => c.trim().startsWith("jwt="));
+        if (!jwtCookie) {
+          return;
+        }
+        token = jwtCookie.split("=")[1];
+        expirationDate = req.headers.cookie
+          .split(";")
+          .find(c => c.trim().startsWith("expirationDate="))
+          .split("=")[1];
+      } else {
+        token = localStorage.getItem("token");
+        expirationDate = localStorage.getItem("tokenExpiration");
+      }
+      if (new Date().getTime() > Number.parseInt(expirationDate) || !token) {
+        console.log("No token or invalid token");
+        vuexContext.dispatch("logout");
+        return;
+      }
+      vuexContext.commit("SET_TOKEN", token);
+    },
+    logout(vuexContext) {
+      vuexContext.commit("CLEAR_TOKEN");
+      Cookie.remove("jwt");
+      Cookie.remove("expirationDate");
+      if (process.client) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("tokenExpiration");
+      }
+    }
+  }
+};
+
+export default auth;

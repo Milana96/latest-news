@@ -13,20 +13,7 @@ const posts = {
    }
   },
   actions: {
-    fetchPosts(vuexContext, commit) {
-        return axios.get('https://latest-news-f9dc0.firebaseio.com/posts.json')
-            .then((result) => {
-                var postsArray = [];
-                for (const key in result.data) {
-                    postsArray.push({...result.data[key], id: key});
-                }
-                console.log(postsArray);
-                
-                vuexContext.commit('setPosts', postsArray);
-            })
-            .catch((err) => {console.log(err);
-            })
-    }
+   
   },
   getters: {
     loadedPosts(state) {
