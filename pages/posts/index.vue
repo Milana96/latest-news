@@ -60,7 +60,7 @@
         </div>
       </div>
     </section>
-    <section class="existing-posts" id="existing-posts">
+    <section class="existing-posts homepage" id="existing-posts">
       <PostList :posts="loadedPosts"></PostList>
     </section>
   </div>

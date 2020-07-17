@@ -65,7 +65,8 @@ const createStore = () => {
         };
         return axios
           .post(
-            "https://latest-news-f9dc0.firebaseio.com/posts.json",
+            "https://latest-news-f9dc0.firebaseio.com/posts.json?auth=" +
+              vuexContext.state.auth.token,
             createdPost
           )
           .then(result => {
@@ -83,7 +84,8 @@ const createStore = () => {
           .put(
             "https://latest-news-f9dc0.firebaseio.com/posts/" +
               editedPost.id +
-              ".json",
+              ".json?auth=" +
+              vuexContext.state.auth.token,
             editedPost
           )
           .then(res => {
@@ -94,7 +96,10 @@ const createStore = () => {
       removePost(vuexContext, postID) {
         axios
           .delete(
-            "https://latest-news-f9dc0.firebaseio.com/posts/" + postID + ".json"
+            "https://latest-news-f9dc0.firebaseio.com/posts/" +
+              postID +
+              ".json?auth=" +
+              vuexContext.state.auth.token
           )
           .then(res => {
             vuexContext.commit("REMOVE_POST", postID);

@@ -15,26 +15,36 @@
     <div class="featured-posts">
       <h1 class="tech">ADMIN</h1>
       <p class="create-post">
-        This is the place where you can create write the latest tech news 
-        about the hardware, apps and much more.
+        This is the place where you can create write the latest tech news about
+        the hardware, apps and much more.
       </p>
-       <AppButton  @click="$router.push('/admin/new-post')">Create post</AppButton>
-     
+      <div class="admin-buttons">
+        <AppButton @click="$router.push('/admin/new-post')"
+          >Create post</AppButton
+        >
+        <AppButton @click="onLogout">Logout</AppButton>
+      </div>
     </div>
-     <section class="admin existing-posts">
-        <PostList isAdmin :posts="loadedPosts"></PostList>
-      </section>
+    <section class="admin existing-posts">
+      <PostList isAdmin :posts="loadedPosts"></PostList>
+    </section>
   </div>
 </template>
 
 <script>
 export default {
   layout: "admin",
-  // uncomment and fix later
-  // middleware: ['check-auth', 'auth'],
+  middleware: ["check-auth", "auth"],
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts;
+    }
+  },
+  methods: {
+    onLogout() {
+      this.$store.dispatch("auth/logout").then(() => {
+        this.$router.push("/admin/auth");
+      });
     }
   }
 };
