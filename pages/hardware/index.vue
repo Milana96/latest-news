@@ -3,10 +3,12 @@
     <div class="home-page">
       <img class="logo" src="~/assets/images/logo.png" alt="tech-logo" />
       <section class="intro">
-        <h1 class="tech ui-margin-b-small">Get the latest tech news!</h1>
+        <h1 class="tech ui-margin-b-small">
+          Get the latest tech news about hardware!
+        </h1>
         <p class="intro-text">
           The latest tech news about the world's best (and sometimes worst)
-          hardware, apps, and much more.
+          hardware and much more.
         </p>
       </section>
       <a href="#existing-posts" class="btn btn-white btn-animated"
@@ -16,7 +18,7 @@
     <section class="home-page-about ui-margin-b-extra-large">
       <div class="ui-center ui-margin-b-medium">
         <h2 class="heading-secondary">
-          Exciting news from technology
+          Exciting news about hardware
         </h2>
       </div>
       <div class="home-page-about-row">
@@ -39,35 +41,18 @@
             technology daily.
           </p>
         </div>
-        <div class="col-1-of-2">
+        <div class="col-1-of-2 ui-flex-center">
           <div class="composition">
             <img
-              src="~/assets/images/composition-p1.jpg"
+              src="~/assets/images/hardware-img.jpg"
               alt=""
               class="composition-photo composition-photo-p1"
-            />
-            <img
-              src="~/assets/images/composition-p2.jpg"
-              alt=""
-              class="composition-photo composition-photo-p2"
-            />
-            <img
-              src="~/assets/images/composition-p3.jpg"
-              alt=""
-              class="composition-photo composition-photo-p3"
             />
           </div>
         </div>
       </div>
     </section>
     <section class="existing-posts homepage" id="existing-posts">
-      <div class="search-post ui-margin-b-small">
-        <AppControlInput
-          v-model="search"
-          placeholder="Search"
-        ></AppControlInput>
-        <span><fa class="icons-item" :icon="['fa', 'search']"/></span>
-      </div>
       <PostList :posts="loadedPosts"></PostList>
     </section>
   </div>
@@ -75,26 +60,11 @@
 
 <script>
 export default {
-  data() {
-    return {
-      search: ""
-    };
-  },
   computed: {
     loadedPosts() {
-      if (this.search && this.search != "") {
-        const searchText = this.search.toLowerCase();
-        return this.$store.getters.loadedPosts.filter(post => {
-          return (
-            post.author.toLowerCase().includes(searchText) ||
-            post.title.toLowerCase().includes(searchText) ||
-            post.previewText.toLowerCase().includes(searchText) ||
-            post.content.toLowerCase().includes(searchText) ||
-            post.category.toLowerCase().includes(searchText)
-          );
-        });
-      }
-      return this.$store.getters.loadedPosts;
+      return this.$store.getters.loadedPosts.filter(
+        post => post.category.toLowerCase() == "hardware"
+      );
     }
   }
 };

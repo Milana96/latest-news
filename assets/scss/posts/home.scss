@@ -1,25 +1,4 @@
 @import "../base/index.scss";
-
-.ui-center {
-  text-align: center;
-}
-.ui-margin-b-small {
-  margin-bottom: 1.5rem;
-}
-.ui-margin-b-medium {
-  margin-bottom: 3rem;
-}
-.ui-margin-b-big {
-  margin-bottom: 5rem;
-}
-.ui-margin-b-extra-large {
-  padding-bottom: 25rem !important;
-}
-
-.ui-margin-l-medium {
-  margin-left: 5rem;
-}
-
 .home-page {
   background-image: linear-gradient(to right bottom, #b3570b98, #2e2b27e0),
     url("~assets/images/tech-2.jpg");
@@ -140,7 +119,7 @@
             }
           }
 
-          &:hover &-photo:not(:hover) {
+          &:hover .composition-photo:not(:hover) {
             transform: scale(0.9);
           }
         }

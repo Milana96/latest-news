@@ -21,6 +21,10 @@
           control-type="textarea"
           >Preview Text</AppControlInput
         >
+         <AppControlInput
+          v-model="editedPost.category"
+          >Category (Hardware / Software)</AppControlInput
+        >
         <AppButton type="submit">Save</AppButton>
         <AppButton type="button" btn-style="cancel" @click="onCancel"
           >Cancel</AppButton
@@ -51,7 +55,8 @@ export default {
             title: "",
             image: "",
             content: "",
-            previewText: ""
+            previewText: "",
+            category: ""
           }
     };
   },

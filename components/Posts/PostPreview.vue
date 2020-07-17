@@ -10,6 +10,7 @@
           <h1>{{ title }}</h1>
           <p>{{ previewText }}</p>
           <small>{{ author }}</small>
+          <small class="category">{{ category }}</small>
         </div>
       </article>
       <article class="post-preview-side post-preview-side-back">
@@ -39,6 +40,10 @@ export default {
       required: true
     },
     author: {
+      type: String,
+      required: true
+    },
+    category: {
       type: String,
       required: true
     },
