@@ -22,7 +22,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: rgba($color: white, $alpha: .6);
+    background-color: rgba($color: $dark_grey, $alpha: .3);
     transform: skew(-7deg, 0);
     & > * {
       transform: skew(7deg, 0);
@@ -64,6 +64,9 @@
       right: 0;
       transform: skew(0, 0);
       opacity: .15;
+    }
+    .auth {
+      height: 357px;
     }
   }
 }

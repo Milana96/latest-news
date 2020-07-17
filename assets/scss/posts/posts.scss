@@ -22,7 +22,8 @@
     $tertiary_theme_color 75%,
     $quaternary_theme_color 100%
   );
-  margin-top: -11rem;
+  margin-top: -20rem;
+
   &-preview {
     display: flex;
     flex-direction: row;
@@ -35,6 +36,10 @@
     border: none;
     color: $dark_grey;
   }
+}
+
+.homepage {
+  margin-top: -26rem;
 }
 
 .post-preview {
@@ -57,12 +62,12 @@
     backface-visibility: hidden;
     transition: all 0.8s ease;
     border-radius: 3px;
-      &-front {
+    &-front {
       background-color: rgba($color: white, $alpha: 0.8);
     }
     &-back {
       transform: rotateY(180deg);
-      background-color: rgba($color: $dark_grey, $alpha: 1.0);
+      background-color: rgba($color: $dark_grey, $alpha: 1);
       text-align: center;
       position: relative;
       h1 {
@@ -80,11 +85,10 @@
         display: inline-block;
         border-radius: 100px;
         transition: all 0.2s;
-          &:hover {
-            color: $primary_theme_color;
-          }
+        &:hover {
+          color: $primary_theme_color;
+        }
       }
-    
     }
   }
   &:hover &-side-front {

@@ -8,9 +8,6 @@
       <div class="header-container-nav">
         <ul class="header-container-nav-list">
           <li class="header-container-nav-list-item">
-            <nuxt-link to="/posts">Blog</nuxt-link>
-          </li>
-          <li class="header-container-nav-list-item">
             <nuxt-link to="/about">About</nuxt-link>
           </li>
           <li class="header-container-nav-list-item">
