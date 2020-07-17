@@ -13,7 +13,7 @@
         >Discover our news</a
       >
     </div>
-    <section class="home-page-about">
+    <section class="home-page-about ui-margin-b-extra-large">
       <div class="ui-center ui-margin-b-medium">
         <h2 class="heading-secondary">
           Exciting news from technology

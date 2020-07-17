@@ -1,5 +1,6 @@
 @import "contact";
 @import "../base/mixins";
+@import "../pages/about.scss";
 .container {
     @include container;
 }
