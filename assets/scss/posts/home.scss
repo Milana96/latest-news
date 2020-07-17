@@ -12,13 +12,20 @@
 .ui-margin-b-big {
   margin-bottom: 5rem;
 }
+.ui-margin-b-extra-large {
+  padding-bottom: 25rem !important;
+}
+
+.ui-margin-l-medium {
+  margin-left: 5rem;
+}
 
 .home-page {
   background-image: linear-gradient(to right bottom, #b3570b98, #2e2b27e0),
-  url("~assets/images/tech-2.jpg");
+    url("~assets/images/tech-2.jpg");
   background-size: cover;
   background-position: center;
-  clip-path: polygon(0 0, 100% 0, 100%  75%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
   height: calc(100vh - 60px);
   padding: 2rem;
   display: flex;
@@ -59,23 +66,27 @@
   }
   &-about {
     background-color: $light_grey;
-    padding: 25rem 0;
-    margin-top: -25vh; 
+    padding: 25rem 0 0;
+    margin-top: -25vh;
     color: $dark_grey;
     .heading-secondary {
       font-size: 3.5rem;
       text-transform: uppercase;
       font-weight: 700;
       display: inline-block;
-      background-image: linear-gradient(to right, $primary_theme_color, $secondary_theme_color);
+      background-image: linear-gradient(
+        to right,
+        $primary_theme_color,
+        $secondary_theme_color
+      );
       -webkit-background-clip: text;
       color: transparent;
       letter-spacing: 2px;
-      transition: all .2s;
-        &:hover {
-          transform: skewY(2deg) skewX(15deg) scale(1.1);
-          text-shadow: .5rem 1rem 2rem rgba($color: #000000, $alpha: .2);
-        }
+      transition: all 0.2s;
+      &:hover {
+        transform: skewY(2deg) skewX(15deg) scale(1.1);
+        text-shadow: 0.5rem 1rem 2rem rgba($color: #000000, $alpha: 0.2);
+      }
     }
     .heading-tertiary {
       font-size: $default-font-size;
@@ -92,58 +103,121 @@
       display: flex;
       margin: 0 5rem;
       flex-direction: row;
-      justify-content: space-around;
-      // align-items: center;
+      justify-content: space-between;
       .col-1-of-2 {
         display: flex;
         flex: 0 0 50%;
         flex-wrap: wrap;
         flex-direction: column;
-          .composition {
-            position: relative;
-            &-photo {
-              width: 300px;
-              height: 300px;
-              box-shadow: 0 1.5rem 4rem rgba($color: #000000, $alpha: .4);
-              border-radius: 2px;
-              position: absolute;
-              z-index: 9;
-              outline-offset: .8rem;
-              transition: all .2s;
-              &-p1 {
-                left: 0;
-                top: 0rem;
-              }
-              &-p2 {
-                left: 25rem;
-                top: -0rem;
-              }
-              &-p3 {
-                left: 25%;
-                top: 3rem;
-              }
-              &:hover {
-                outline: .4rem solid $primary_theme_color;
-                transform: scale(1.05);
-                box-shadow: 0 2.5rem 4rem rgba($color: #000000, $alpha: .5);
-                z-index: 99;
-              }
-              
+        .composition {
+          position: relative;
+          &-photo {
+            width: 300px;
+            height: 300px;
+            box-shadow: 0 1.5rem 4rem rgba($color: #000000, $alpha: 0.4);
+            border-radius: 2px;
+            position: absolute;
+            z-index: 9;
+            outline-offset: 0.8rem;
+            transition: all 0.2s;
+            &-p1 {
+              left: 0;
+              top: 0rem;
             }
-          
-            &:hover &-photo:not(:hover) {
-              transform: scale(.9);
+            &-p2 {
+              left: 25rem;
+              top: -0rem;
+            }
+            &-p3 {
+              left: 25%;
+              top: 3rem;
+            }
+            &:hover {
+              outline: 0.4rem solid $primary_theme_color;
+              transform: scale(1.05);
+              box-shadow: 0 2.5rem 4rem rgba($color: #000000, $alpha: 0.5);
+              z-index: 99;
             }
           }
-         
+
+          &:hover &-photo:not(:hover) {
+            transform: scale(0.9);
+          }
+        }
       }
-     
+    }
+    .home-page-about-stories {
+      .row {
+        .story {
+          width: 75%;
+          margin: 2rem auto;
+          padding: 1.5rem;
+          box-shadow: 0 3rem 6rem rgba($color: #000000, $alpha: 0.1);
+          background-color: rgba($color: white, $alpha: 0.5);
+          border-radius: 3px;
+          transform: skew(-7deg, 0);
+          & > * {
+            transform: skew(7deg, 0);
+          }
+          &-shape {
+            width: 8rem;
+            height: 8rem;
+            float: left;
+            position: relative;
+            -webkit-shape-outside: circle(50% at 50% 50%);
+            shape-outside: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            -webkit-clip-path: circle(50% at 50% 50%);
+            transform: translateX(-1rem) skew(7deg, 0);
+            &-image {
+              height: 100%;
+              // width: 100%;
+              transform: translateX(-4rem) scale(1.4);
+              backface-visibility: hidden;
+              transition: all .2s;
+             }
+            &-caption {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, 20%);
+              font-size: 1.5rem;
+              text-transform: uppercase;
+              color: white;
+              opacity: 0;
+              transition: all .2s; 
+              -moz-backface-visibility: hidden;
+             }
+          
+          }
+          &:hover .story-shape-image {
+            transform: translateX(-4rem) scale(1);
+          }
+          &:hover .story-shape-caption {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+      .final {
+        padding: 3rem;
+        h3 {
+          color: $primary_theme_color;
+        }
+      }
     }
   }
 }
 
 .create-post {
   padding: 20px 0;
+}
+
+.video-about {
+  height: 600px;
+  width: 100%;
+  object-fit: fill;
+  filter: blur(3px) brightness(80%);
 }
 
 
