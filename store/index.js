@@ -8,7 +8,7 @@ const createStore = () => {
       auth
     },
     state: {
-      loadedPosts: []
+      loadedPosts: [],
     },
     mutations: {
       SET_POSTS(state, payload) {

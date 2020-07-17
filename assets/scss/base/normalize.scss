@@ -38,6 +38,7 @@ body {
 body {
 	@include use-font($family, $weight);
 	margin: 0;
+	color: $dark_grey;
 }
 
 /**
