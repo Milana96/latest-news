@@ -10,6 +10,19 @@
       </div>
       <img class="post-image" :src="loadedPost.image" />
       <p class="post-content">{{ loadedPost.content }}</p>
+      <div class="rating">
+        <h3 class="rating-heading">Rate this post</h3>
+        <span>
+          <fa
+            @click="ratePost(index)"
+            v-for="index in count"
+            :key="index"
+            :class="{ rated: index <= rated }"
+            class="icons-item"
+            :icon="['fa', 'star']"
+          />
+        </span>
+      </div>
       <section class="post-feedback">
         <p>
           Let me know what do you think about the post, send a mail to
@@ -27,11 +40,9 @@
             <fa :icon="['fas', 'pencil-alt']" />
           </span>
         </nuxt-link>
-        <!-- <button > -->
-          <span @click="removePost">
-            <fa class="icons-item" :icon="['fa', 'trash']" />
-          </span>
-        <!-- </button> -->
+        <span @click="removePost">
+          <fa class="icons-item" :icon="['fa', 'trash']" />
+        </span>
       </div>
     </section>
     <section class="other-posts">
@@ -44,10 +55,13 @@
 <script>
 import axios from "axios";
 export default {
-  middleware: ['check-auth', 'auth'],
+  middleware: ["check-auth", "auth"],
   data() {
     return {
-      postID: ""
+      postID: "",
+      rated: 0,
+      count: 5,
+      postToRate: []
     };
   },
   computed: {
@@ -69,11 +83,26 @@ export default {
       })
       .catch(e => context.error(e));
   },
+  created() {
+    this.postToRate = this.$store.state.loadedPosts.filter(
+      post => post.id == this.$route.params.id
+    );
+    this.rated = this.postToRate[0].rate;
+  },
   methods: {
     removePost() {
       this.$store.dispatch("removePost", this.$route.params.id).then(res => {
         this.$router.push("/admin");
       });
+    },
+    ratePost(ratedIndex) {
+      if (ratedIndex < this.rated) {
+        this.rated--;
+        this.postToRate[0].rate--;
+      } else {
+        this.rated++;
+        this.postToRate[0].rate++;
+      }
     }
   }
 };
