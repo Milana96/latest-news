@@ -12,6 +12,17 @@
           <small>{{ author }}</small>
           <small class="category">{{ category }}</small>
         </div>
+        <div class="rating">
+          <span>
+            <fa
+              v-for="index in count"
+              :key="index"
+              :class="{ rated: index <= rate }"
+              class="icons-item"
+              :icon="['fa', 'star']"
+            />
+          </span>
+        </div>
       </article>
       <article class="post-preview-side post-preview-side-back">
         <h1>Click me to find out more!</h1>
@@ -50,6 +61,16 @@ export default {
     isAdmin: {
       type: Boolean,
       required: true
+    },
+    rate: {
+      type: Number,
+      required: true
+    }
+  },
+  data() {
+    return {
+      // rated: 0,
+      count: 5,
     }
   },
   computed: {

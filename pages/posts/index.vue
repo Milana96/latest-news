@@ -60,7 +60,7 @@
         </div>
       </div>
     </section>
-    <section class="existing-posts homepage" id="existing-posts">
+    <section class="existing-posts posts-margin" id="existing-posts">
       <div class="search-post ui-margin-b-small">
         <AppControlInput
           v-model="search"

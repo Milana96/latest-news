@@ -31,6 +31,7 @@
     align-items: center;
     flex-wrap: wrap;
     transition: all 0.3s ease-in;
+    margin-top: 5rem;
   }
   a {
     border: none;
@@ -67,11 +68,15 @@
 }
 
 .homepage {
-  margin-top: -26rem;
+  margin-top: -30rem;
+}
+
+.posts-margin {
+  margin-top: -40rem;
 }
 
 .post-preview {
-  height: 25rem;
+  height: 30rem;
   perspective: 150rem;
   -moz-perspective: 150rem;
   &-content {
@@ -85,7 +90,7 @@
     top: 0;
     left: 0;
     width: 90%;
-    height: 25rem;
+    height: 30rem;
     padding: 1rem;
     backface-visibility: hidden;
     transition: all 0.8s ease;

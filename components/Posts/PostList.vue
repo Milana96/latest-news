@@ -8,6 +8,7 @@
             :author="post.author"
             :previewText="post.previewText"
             :category="post.category"
+            :rate="post.rate"
         ></PostPreview>
     </div>
 </template>
