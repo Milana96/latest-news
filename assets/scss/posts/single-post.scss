@@ -3,13 +3,13 @@
 .single-post-page {
   min-height: calc(100vh - 260px);
   width: 100%;
-  min-width: 1440px;
+  max-width: 1440px;
   margin: 0 -30px;
-  padding: 30px;
+  padding: 0 15px;
   display: flex;
-  @include max-mq($sm) {
-    flex-direction: column;
+  @include max-mq($mac) {
     flex-wrap: wrap;
+    margin: 0;
   }
 }
 .post {
@@ -20,6 +20,11 @@
   flex-direction: column;
   flex-wrap: wrap;
   flex: 0 0 70%;
+    @include max-mq($sm) {
+      flex: 0 0 100%;
+      width: 100%;
+      padding: 0 10px;
+    }
   &-title {
     text-transform: uppercase;
     font-weight: bold;
@@ -31,6 +36,9 @@
     width: 600px;
     height: 600px;
     display: block;
+      @include max-mq($mb) {
+        width: 100%;
+      }
   }
   &-content {
     text-align: justify;
@@ -74,6 +82,7 @@
   }
   span {
     svg {
+      color: $dark_grey;
       margin: 5px;
     }
     .rated {
@@ -93,6 +102,9 @@
   flex-direction: column;
   align-items: center;
   flex: 0 0 30%;
+  @include max-mq($sm) {
+    flex: 0 0 100%;
+  }
   .existing-posts {
     display: block;
     padding: 0;

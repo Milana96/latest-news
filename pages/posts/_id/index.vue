@@ -79,9 +79,17 @@ export default {
     ratePost(ratedIndex) {
       if (ratedIndex < this.rated) {
         this.rated--;
+        this.$store.commit("SET_RATE", {
+          id: this.$route.params.id,
+          rate: this.rated
+        });
         this.postToRate[0].rate--;
       } else {
         this.rated++;
+        this.$store.commit("SET_RATE", {
+          id: this.$route.params.id,
+          rate: this.rated
+        });
         this.postToRate[0].rate++;
       }
     }
