@@ -27,6 +27,10 @@ const createStore = () => {
         state.loadedPosts = state.loadedPosts.filter(
           post => post.id != payload
         );
+      },
+      SET_RATE(state, {id, rate}) {
+        const postToRate = state.loadedPosts.filter(post => post.id == id);
+        postToRate.rate = rate;
       }
     },
     actions: {

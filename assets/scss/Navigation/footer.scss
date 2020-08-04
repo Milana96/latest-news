@@ -12,6 +12,9 @@
             text-transform: uppercase;
         }
         > .contact {
+            @include max-mq($mb) {
+               flex-direction: column;
+            }
             a {
                 color: #51595f;
                 &:hover,
