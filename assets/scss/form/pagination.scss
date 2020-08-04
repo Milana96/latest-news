@@ -1,0 +1,30 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+
+    .page-item {
+        list-style: none;
+        button {
+            background: transparent;
+            color: $primary_theme_color;
+            margin: 0 10px;
+            padding: 8px 12px;
+            text-align: center;
+            border-radius: 4px;
+            border: 1px solid $primary_theme_color;
+            transition: all 200ms linear;
+            &:hover, &:focus {
+                background-color: $primary_theme_color;
+                color: white;
+                border: 1px solid $primary_theme_color;
+            }
+        }
+        .prev-next {
+            background-color: $primary_theme_color;
+            color: white;
+        }
+    }
+}
