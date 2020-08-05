@@ -40,7 +40,6 @@ const auth = {
           returnSecureToken: true
         })
         .then(result => {
-          console.log(result.data);
           vuexContext.commit("SET_TOKEN", result.data.idToken);
           localStorage.setItem("token", result.data.idToken);
           localStorage.setItem(

@@ -5,7 +5,7 @@
   &-backdrop {
     width: 100%;
     height: 100%;
-    background-color: $dark_grey;
+    background-color: transparent;
     z-index: 1000;
     position: fixed;
     top: 0;
@@ -35,13 +35,17 @@
 
 // style for all a el.
 a {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
     text-transform: uppercase;
     text-decoration: none;
     color: white;
+    padding-bottom: 5px;
     &:hover,
     &:active,
     &.nuxt-link-active {
-      color: $primary_theme_color;
+      border-bottom: 2px solid white;
     }
 }
 
@@ -62,33 +66,58 @@ a {
 
   @include min-mq($sm) {
     &-nav {
-      display: block;
+      display: flex;
+      flex:  0 0 70%;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100%;
+      padding-right: 2rem;
+      background-color: $primary_theme_color;
     }
   }
 }
 .the-header {
   width: 100%;
-  position: fixed;
   height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $dark_grey;
   z-index: 100;
   box-sizing: border-box;
-  padding: 0 30px;
+    @include max-mq($sm) {
+      background-color: $dark_grey;
+    }
+    @include max-mq($mb) {
+      padding: 0 2rem;
+    }
 }
 
 .logo {
-  margin: 0 10px;
+  display: flex;
+  flex: 0 0 30%;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  padding-left: 2rem;
+  background-color: $dark_grey;
   font-size: 1.3rem;
+    @include max-mq($sm) {
+      flex: inherit;
+    }
   &-ln {
     text-transform: uppercase;
     font-weight: bold;
   }
   a {
+    font-size: 24px;
     text-decoration: none;
     color: white;
+    @include max-mq($sm) {
+      color: $primary_theme_color;
+        &:active {
+          border-bottom: 2px solid $primary_theme_color !important;
+        }
+    }
   }
 }
 
@@ -114,7 +143,7 @@ a {
     .bar {
         width: 90%;
         height: 2px;
-        background-color: white;
+        background-color: $primary_theme_color;
     }
 }
 

@@ -1,19 +1,44 @@
 <template>
   <div>
     <div class="home-page">
-      <img class="logo" src="~/assets/images/logo.png" alt="tech-logo" />
-      <section class="intro">
-        <h1 class="tech ui-margin-b-small">Get the latest tech news!</h1>
-        <p class="intro-text">
-          The latest tech news about the world's best (and sometimes worst)
-          hardware, apps, and much more.
-        </p>
-      </section>
-      <a href="#existing-posts" class="btn btn-white btn-animated"
-        >Discover our news</a
-      >
+      <div class="intro">
+        <input
+          type="checkbox"
+          name=""
+          class="for-hardware"
+          id="hardware"
+          checked
+          @click="active = !active"
+        />
+        <label
+          class="intro-text intro-text_one"
+          for="hardware"
+          >Hardware</label
+        >
+        <input
+          type="checkbox"
+          name=""
+          class="for-software"
+          id="software"
+          @click="active = !active"
+        />
+        <label
+          class="intro-text intro-text_one intro-text_two"
+          for="software"
+          >Software</label
+        >
+      </div>
+      <div class="background">
+        <div :class="{active: active}" class="img-wrap hardware"></div>
+        <div :class="{softwareActive: !active}" class="img-wrap software"></div>
+      </div>
+      <div class="discover-more">
+        <a href="#existing-posts" class="btn btn-white btn-animated"
+          >Discover our news</a
+        >
+      </div>
     </div>
-    <section class="home-page-about ui-margin-b-extra-large">
+    <section class="home-page-about">
       <div class="ui-center ui-margin-b-medium">
         <h2 class="heading-secondary">
           Exciting news from technology
@@ -60,7 +85,7 @@
         </div>
       </div>
     </section>
-    <section class="existing-posts posts-margin" id="existing-posts">
+    <section class="existing-posts" id="existing-posts">
       <div class="search-post ui-margin-b-small">
         <AppControlInput
           v-model="search"
@@ -69,7 +94,7 @@
         <span><fa class="icons-item" :icon="['fa', 'search']"/></span>
       </div>
       <PostList :posts="loadedPosts"></PostList>
-      <Pagination :page="page" :pages="pages"/>
+      <Pagination :page="page" :pages="pages" @clickedPage="clicked"/>
     </section>
   </div>
 </template>
@@ -85,7 +110,8 @@ export default {
       search: "",
       pages: [],
       page: 1,
-      perPage: 2
+      perPage: 3,
+      active: true
     };
   },
   created() {
@@ -119,13 +145,16 @@ export default {
         this.pages.push(index);
       }
     },
+    clicked(clickedPageVal) {
+      console.log(clickedPageVal);
+      this.page = clickedPageVal;
+    },
     paginate(posts) {
       let page = this.page;
       let perPage = this.perPage;
       let from = page * perPage - perPage;
       let to = page * perPage;
       return posts.slice(from, to);
-      console.log(posts);
     }
   }
 };

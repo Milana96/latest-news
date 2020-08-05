@@ -1,52 +1,140 @@
 @import "../base/index.scss";
 .home-page {
-  background-image: linear-gradient(to right bottom, #b3570b98, #2e2b27e0),
-    url("~assets/images/tech-2.jpg");
-  background-size: cover;
-  background-position: center;
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
   height: calc(100vh - 60px);
-  padding: 2rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  .logo {
-    display: block;
-    width: 70px;
-    height: 70px;
+  background-color: $primary_theme_color;
+
+  .background {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex: 0 0 70%;
+
+    .img-wrap {
+      position: absolute;
+      top: -60px;
+      left: 250px;
+      width: 70%;
+      height: 100%;
+      opacity: 0;
+      z-index: 9;
+      transition: all 550ms linear;
+      transition-delay: 100ms;
+      background-position: center top;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-image: url("~assets/images/earphones-1.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transform: rotate3d(1, 1, 1, 20deg) perspective(100px);
+      @include max-mq($ls) {
+        top: -20px;
+        width: 400px;
+        height: 400px;
+      }
+      @include max-mq($sm) {
+        width: 300px;
+        height: 300px;
+        top: 30px;
+        left: 180px;
+      }
+      @include max-mq($mb) {
+        left: 0;
+      }
+        &.active {
+          opacity: 1;
+          animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both;
+        }
+    }
+   
   }
   .intro {
-    height: 200px;
     position: relative;
+    height: 100%;
     display: flex;
+    flex: 0 0 30%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    &-text {
-      color: white;
-      font-size: 20px;
-      text-align: center;
-      animation: moveInRight 1s ease-out;
+    background-color: $dark_grey;
+    z-index: 99;
+    @include max-mq($mb) {
+      background-color: $primary_theme_color;
     }
-    .tech {
-      padding: 0 0 5px;
-      font-size: 30px;
-      text-transform: uppercase;
-      font-weight: bold;
-      color: $dark_grey;
-      border-bottom: 3px solid $primary_theme_color;
-      animation: moveInLeft 1s ease-out;
-      @include max-mq($sm) {
-        font-size: 2rem;
+    &-text {
+      position: absolute;
+      top: 150px;
+      left: 170px;
+      color: white;
+      font-size: 100px;
+      font-weight: 800;
+      text-align: left;
+      cursor: pointer;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+        @include max-mq($ls) {
+          font-size: 65px;
+        }
+        @include max-mq($sm) {
+          top: 100px;
+          left: 50px;
+        }
+      &::before {
+        content: "";
+        z-index: -2;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: inherit;
+      }
+
+      &_one {
+        background-image: url("~assets/images/tech-2.jpg");
+        @include max-mq($mb) {
+          background-image: url("~assets/images/hardware-img.jpg");
+        }
+      }
+
+      &_two {
+        top: 280px;
+        left: 165px;
+        @include max-mq($ls) {
+          top: 250px;
+        }
+        @include max-mq($sm) {
+          top: 170px;
+          left: 50px;
+        }
+      }
+    }
+  }
+
+  .discover-more {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    @include max-mq($mb) {
+      z-index: 99;
+      text-align: center;
+    }
+    .btn {
+      cursor: pointer;
+      @include max-mq($mb) {
+        font-size: 12px;
       }
     }
   }
   &-about {
     background-color: $light_grey;
-    padding: 15rem 0 0;
-    margin-top: -25vh;
+    padding: 5rem 0;
     color: $dark_grey;
     .heading-secondary {
       font-size: 3.5rem;
@@ -62,9 +150,9 @@
       color: transparent;
       letter-spacing: 2px;
       transition: all 0.2s;
-        @include max-mq($mb) {
-          font-size: 1.6rem;
-        }
+      @include max-mq($mb) {
+        font-size: 1.6rem;
+      }
       &:hover {
         transform: skewY(2deg) skewX(15deg) scale(1.1);
         text-shadow: 0.5rem 1rem 2rem rgba($color: #000000, $alpha: 0.2);
@@ -87,10 +175,10 @@
       flex-direction: row;
       justify-content: space-between;
       flex-wrap: wrap;
-        @include max-mq($mb) {
-          margin: 0 1rem;
-          flex-direction: column;
-        }
+      @include max-mq($mb) {
+        margin: 0 1rem;
+        flex-direction: column;
+      }
       .col-1-of-2 {
         display: flex;
         flex: 0 0 50%;
@@ -166,8 +254,8 @@
               height: 100%;
               transform: translateX(-4rem) scale(1.4);
               backface-visibility: hidden;
-              transition: all .2s;
-             }
+              transition: all 0.2s;
+            }
             &-caption {
               position: absolute;
               top: 50%;
@@ -177,10 +265,9 @@
               text-transform: uppercase;
               color: white;
               opacity: 0;
-              transition: all .2s; 
+              transition: all 0.2s;
               -moz-backface-visibility: hidden;
-             }
-          
+            }
           }
           &:hover .story-shape-image {
             transform: translateX(-4rem) scale(1);
@@ -201,6 +288,21 @@
   }
 }
 
+// show hardware/software image on input checked
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+  position: absolute;
+  visibility: hidden;
+}
+
+.img-wrap.software.softwareActive {
+  width: 60%;
+  left: 275px;
+  opacity: 1;
+  animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both;
+  background-image: url("~assets/images/earphones-2.png");
+}
+
 .create-post {
   padding: 20px 0;
 }
@@ -211,5 +313,3 @@
   object-fit: fill;
   filter: blur(3px) brightness(80%);
 }
-
-
