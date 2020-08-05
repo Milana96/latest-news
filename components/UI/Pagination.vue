@@ -6,7 +6,7 @@
           type="button"
           class="page-link"
           v-if="page != 1"
-          @click="page--"
+          @click="prev"
         >
           Previous
         </button>
@@ -25,7 +25,7 @@
       <li class="page-item">
         <button
           type="button"
-          @click="page++"
+          @click="next"
           v-if="page < pages.length"
           class="page-link"
         >
@@ -52,13 +52,16 @@ export default {
     },
     methods: {
         prev() {
-            this.page--
+            this.page--;
+            this.$emit('clickedPage', this.page)
         },
         next() {
-            this.page++
+            this.page++;
+            this.$emit('clickedPage', this.page)
         },
         pagesBetween(pageNumber) {
             this.page = pageNumber;
+            this.$emit('clickedPage', pageNumber)
         }
     },
 }

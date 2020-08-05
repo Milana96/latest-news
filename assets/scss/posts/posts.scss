@@ -18,12 +18,8 @@
   background-repeat: no-repeat;
   width: 100%;
   padding: 5rem 1rem;
-  clip-path: polygon(0 10%, 100% 0%, 100% 100%, 0% 100%);
-  margin-top: -20rem;
     @include max-mq($ls) {
-      margin-top: 0;
       padding: 5rem;
-      clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
     }
     @include max-mq($mb) {
       padding: 1rem;
@@ -75,16 +71,6 @@
   }
 }
 
-.homepage {
-  margin-top: -30rem;
-}
-
-.posts-margin {
-  margin-top: -40rem;
-    @include max-mq($ls) {
-      margin-top: 0;
-    }
-}
 
 .post-preview {
   height: 30rem;

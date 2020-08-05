@@ -9,6 +9,9 @@ const createStore = () => {
     },
     state: {
       loadedPosts: [],
+      page: 1,
+      perPage: 3,
+      pages: []
     },
     mutations: {
       SET_POSTS(state, payload) {
@@ -31,6 +34,15 @@ const createStore = () => {
       SET_RATE(state, {id, rate}) {
         const postToRate = state.loadedPosts.filter(post => post.id == id);
         postToRate.rate = rate;
+      },
+      SET_PAGINATION(state) {
+        let numberOfPages = Math.ceil(
+          state.loadedPosts.length / state.perPage
+        );
+        
+        for (let index = 1; index <= numberOfPages; index++) {
+          state.pages.push(index);
+        }
       }
     },
     actions: {
@@ -109,6 +121,9 @@ const createStore = () => {
             vuexContext.commit("REMOVE_POST", postID);
           })
           .catch(e => console.log(e));
+      },
+      //pagination
+      setPages(vuexContext) {
       }
     },
     getters: {

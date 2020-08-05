@@ -15,7 +15,7 @@
         >Discover our news</a
       >
     </div>
-    <section class="home-page-about ui-margin-b-extra-large">
+    <section class="home-page-about">
       <div class="ui-center ui-margin-b-medium">
         <h2 class="heading-secondary">
           Exciting news about hardware
@@ -52,7 +52,7 @@
         </div>
       </div>
     </section>
-    <section class="existing-posts homepage" id="existing-posts">
+    <section class="existing-posts" id="existing-posts">
       <PostList :posts="loadedPosts"></PostList>
     </section>
   </div>
