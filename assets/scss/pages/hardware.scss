@@ -1,0 +1,19 @@
+.img-fluid {
+  position: absolute;
+  top: 0;
+  left: 100px;
+  background-color: $primary_theme_color;
+  border-radius: 50%;
+  width: 220px;
+  height: 200px;
+  animation: border-transform 6s linear infinite;
+  img {
+    display: block;
+    position: absolute;
+    top: -135px;
+    left: -100px;
+    transform: rotate(-12deg);
+    width: 500px;
+    height: 475px;
+  }
+}

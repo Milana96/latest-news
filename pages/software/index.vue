@@ -1,19 +1,19 @@
 <template>
   <div>
     <div class="home-page">
-      <img class="logo" src="~/assets/images/logo.png" alt="tech-logo" />
-      <section class="intro">
-        <h1 class="tech ui-margin-b-small">
-          Get the latest tech news about software!
-        </h1>
-        <p class="intro-text">
-          The latest tech news about the world's best (and sometimes worst)
-          software, apps, and much more.
-        </p>
-      </section>
-      <a href="#existing-posts" class="btn btn-white btn-animated"
-        >Discover our news</a
-      >
+      <div class="intro">
+        <h1 class="intro-text intro-text_one intro-text_two" for="software"
+          >Software</h1
+        >
+      </div>
+      <div class="background">
+        <div :class="{ active: active }" class="img-wrap software-1"></div>
+      </div>
+      <div class="discover-more">
+        <a href="#existing-posts" class="btn btn-white btn-animated"
+          >Discover our news</a
+        >
+      </div>
     </div>
     <section class="home-page-about">
       <div class="ui-center ui-margin-b-medium">
@@ -52,7 +52,10 @@
         </div>
       </div>
     </section>
-    <section class="existing-posts" id="existing-posts">
+    <section class="existing-posts software-posts" id="existing-posts">
+      <div class="img-fluid">
+        <img src="~/assets/images/orange-dots.png" alt="" srcset="">
+      </div>
       <div class="search-post ui-margin-b-small">
         <AppControlInput
           v-model="search"
@@ -77,7 +80,8 @@ export default {
       search: "",
       pages: [],
       page: 1,
-      perPage: 3
+      perPage: 3,
+      active: true
     };
   },
   created() {
