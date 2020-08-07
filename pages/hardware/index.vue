@@ -53,18 +53,81 @@
       </div>
     </section>
     <section class="existing-posts" id="existing-posts">
+      <div class="search-post ui-margin-b-small">
+        <AppControlInput
+          v-model="search"
+          placeholder="Search"
+        ></AppControlInput>
+        <span><fa class="icons-item" :icon="['fa', 'search']"/></span>
+      </div>
       <PostList :posts="loadedPosts"></PostList>
+      <Pagination :page="page" :pages="pages" @clickedPage="clicked" />
     </section>
   </div>
 </template>
 
 <script>
+import Pagination from "@/components/UI/Pagination.vue";
 export default {
+  components: {
+    Pagination
+  },
+  data() {
+    return {
+      search: "",
+      page: 1,
+      perPage: 3,
+      pages: []
+    };
+  },
+  created() {
+    this.setPages();
+  },
   computed: {
     loadedPosts() {
-      return this.$store.getters.loadedPosts.filter(
-        post => post.category.toLowerCase() == "hardware"
+      if (this.search && this.search != "") {
+        const searchText = this.search.toLowerCase();
+        return this.paginate(
+          this.$store.getters.loadedPosts
+            .filter(post => post.category == "hardware")
+            .filter(post => {
+              return (
+                post.author.toLowerCase().includes(searchText) ||
+                post.title.toLowerCase().includes(searchText) ||
+                post.previewText.toLowerCase().includes(searchText) ||
+                post.content.toLowerCase().includes(searchText) ||
+                post.category.toLowerCase().includes(searchText)
+              );
+            })
+        );
+      }
+      return this.paginate(
+        this.$store.getters.loadedPosts.filter(
+          post => post.category == "hardware"
+        )
       );
+    }
+  },
+  methods: {
+    setPages() {
+      let numberOfPages = Math.ceil(
+        this.$store.getters.loadedPosts.filter(
+          post => post.category == "hardware"
+        ).length / this.perPage
+      );
+      for (let index = 1; index <= numberOfPages; index++) {
+        this.pages.push(index);
+      }
+    },
+    clicked(clickedPageVal) {
+      this.page = clickedPageVal;
+    },
+    paginate(posts) {
+      let page = this.page;
+      let perPage = this.perPage;
+      let from = page * perPage - perPage;
+      let to = page * perPage;
+      return posts.slice(from, to);
     }
   }
 };
