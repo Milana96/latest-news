@@ -146,7 +146,6 @@ export default {
       }
     },
     clicked(clickedPageVal) {
-      console.log(clickedPageVal);
       this.page = clickedPageVal;
     },
     paginate(posts) {
