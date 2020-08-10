@@ -71,6 +71,11 @@
   }
 }
 
+.hardware-posts, .software-posts {
+  background-image: none;
+  background-color: $light_grey;
+}
+
 
 .post-preview {
   height: 33rem;
