@@ -5,9 +5,21 @@
         <transition name="slide-side">
             <div class="sidenav-container-nav" v-if="show">
                 <ul class="sidenav-container-nav-list" @click="$emit('close')">
-                    <li class="sidenav-container-nav-item">Blog</li>
-                    <li class="sidenav-container-nav-item">About</li>
-                    <li class="sidenav-container-nav-item">Admin</li>
+                     <li class="sidenav-container-nav-item">
+                        <nuxt-link to="/">Home</nuxt-link>
+                    </li>
+                    <li class="sidenav-container-nav-item">
+                         <nuxt-link to="/software">Software</nuxt-link>
+                    </li>
+                    <li class="sidenav-container-nav-item">
+                         <nuxt-link to="/hardware">hardware</nuxt-link>
+                    </li>
+                    <li class="sidenav-container-nav-item">
+                         <nuxt-link to="/about">About</nuxt-link>
+                    </li>
+                     <li class="sidenav-container-nav-item">
+                         <nuxt-link to="/admin">Admin</nuxt-link>
+                    </li>
                 </ul>
             </div>
         </transition>

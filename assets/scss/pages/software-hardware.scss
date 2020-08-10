@@ -7,6 +7,12 @@
   width: 220px;
   height: 200px;
   animation: border-transform 6s linear infinite;
+    @include max-mq($mb) {
+      top: -40px;
+      left: 30px;
+      width: 150px;
+      height: 150px;
+    }
   img {
     display: block;
     position: absolute;
@@ -15,11 +21,16 @@
     transform: rotate(-12deg);
     width: 500px;
     height: 475px;
+    @include max-mq($mb) {
+      top: -40px;
+      left: 0;
+      width: 250px;
+      height: 250px;
+    }
   }
 }
 
 .hardware-fluid {
-  // position: absolute;
   top: -120px !important;
   right: 315px !important;
   left: unset !important;
@@ -30,5 +41,23 @@
     transform: rotate(-18deg) !important;
     width: 350px !important;
     height: 300px !important;
+  }
+}
+
+.software-p1 {
+  @include max-mq($sm) {
+    left: -5rem !important;
+  }
+  @include max-mq($mb) {
+    left: 1rem !important;
+  }
+}
+
+.software-posts {
+  @include max-mq($ls) {
+    padding: 11rem 5rem;
+  }
+  @include max-mq($mb) {
+    padding: 10rem 1rem;
   }
 }
