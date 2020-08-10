@@ -53,6 +53,9 @@
       </div>
     </section>
     <section class="existing-posts hardware-posts" id="existing-posts">
+      <div class="img-fluid hardware-fluid">
+        <img src="~assets/images/earphones-fluid.png" alt="earphones">
+      </div>
       <div class="search-post ui-margin-b-small">
         <AppControlInput
           v-model="search"

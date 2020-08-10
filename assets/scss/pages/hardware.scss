@@ -17,3 +17,18 @@
     height: 475px;
   }
 }
+
+.hardware-fluid {
+  // position: absolute;
+  top: -120px !important;
+  right: 315px !important;
+  left: unset !important;
+  background-color: #428876 !important;
+  img {
+    top: 55px !important;
+    left: -800px !important;
+    transform: rotate(-18deg) !important;
+    width: 350px !important;
+    height: 300px !important;
+  }
+}
