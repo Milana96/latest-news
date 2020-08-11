@@ -1,35 +1,41 @@
 <template>
   <div class="container">
-    <div class="bg-video">
-      <video class="bg-video-content" autoplay muted loop>
-        <source src="~/assets/images/auth-video.mp4" type="video/mp4" />
-        Your browser is not supported!
-      </video>
-    </div>
     <div class="container-inner">
-      <form class="container-inner-form" @submit.prevent="onSubmit">
-        <AppControlInput type="email" v-model="authData.email"
-          >Email address</AppControlInput
-        >
-        <AppControlInput type="password" v-model="authData.password"
-          >Password</AppControlInput
-        >
-        <AppButton type="submit">{{
-          authData.isLogin ? "Login" : "Sign Up"
-        }}</AppButton>
-        <AppButton
-          type="button"
-          btn-style="inverted"
-          style="margin-left: 10px"
-          @click="authData.isLogin = !authData.isLogin"
-          >Switch to {{ authData.isLogin ? "Sign Up" : "Login" }}</AppButton
-        >
-      </form>
-      <img
-        class="container-inner-image auth"
-        src="~/assets/images/auth-img.jpg"
-        alt=""
-      />
+      <h2 class="auth-label"><span>Log In</span><span>Sign Up</span></h2>
+      <input type="checkbox" class="checkbox" name="reg-log" id="reg-log" />
+      <label for="reg-log"></label>
+      <div class="card-3d-wrap">
+        <div class="card-3d-wrapper">
+          <div class="front">
+            <form class="container-inner-form front" @submit.prevent="onSubmit">
+              <label class="sign-log" for="logIn">Log in</label>
+              <AppControlInput type="email" v-model="authData.email"
+                >Email address</AppControlInput
+              >
+              <AppControlInput type="password" v-model="authData.password"
+                >Password</AppControlInput
+              >
+              <AppButton type="submit">
+                Submit
+              </AppButton>
+            </form>
+          </div>
+          <div class="back">
+            <form class="container-inner-form" @submit.prevent="onSubmitSignUp">
+              <label class="sign-log" for="signUp">Sign up</label>
+              <AppControlInput type="email" v-model="authData.email"
+                >Email address</AppControlInput
+              >
+              <AppControlInput type="password" v-model="authData.password"
+                >Password</AppControlInput
+              >
+              <AppButton type="submit">
+                Submit
+              </AppButton>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -47,6 +53,12 @@ export default {
     };
   },
   methods: {
+    onSubmitSignUp() {
+      this.authData.isLogin = false;
+      this.$store.dispatch("auth/authenticateUser", this.authData).then(() => {
+        this.$router.push("/admin");
+      });
+    },
     onSubmit() {
       this.$store.dispatch("auth/authenticateUser", this.authData).then(() => {
         this.$router.push("/admin");
