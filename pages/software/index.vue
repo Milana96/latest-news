@@ -7,7 +7,7 @@
         >
       </div>
       <div class="background">
-        <div :class="{ active: active }" class="img-wrap software-1"></div>
+        <div :class="{ active: active }" class="img-wrap software"></div>
       </div>
       <div class="discover-more">
         <a href="#existing-posts" class="btn btn-white btn-animated"
@@ -46,7 +46,7 @@
             <img
               src="~/assets/images/software-img.jpg"
               alt=""
-              class="composition-photo composition-photo-p1"
+              class="composition-photo composition-photo-p1 software-p1"
             />
           </div>
         </div>

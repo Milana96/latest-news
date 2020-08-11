@@ -86,6 +86,11 @@
     }
   &-content {
     color: $dark_grey;
+      h1 {
+        @include max-mq($mb) {
+          font-size: 16px;
+        }
+      }
   }
 
   &-side {
@@ -100,9 +105,12 @@
     backface-visibility: hidden;
     transition: all 0.8s ease;
     border-radius: 3px;
+    overflow: hidden;
       @include max-mq($sm) {
         position: relative;
-
+      }
+      @include max-mq($mb) {
+        width: 100%;
       }
     &-front {
       background-color: rgba($color: white, $alpha: 0.8);
