@@ -303,8 +303,16 @@
           background-color: rgba($color: white, $alpha: 0.5);
           border-radius: 3px;
           transform: skew(-7deg, 0);
+          @include max-mq($mb) {
+            padding: 1rem;
+            width: 80%;
+            transform: skew(0, 0);
+          }
           & > * {
             transform: skew(7deg, 0);
+            @include max-mq($mb) {
+              transform: skew(0, 0);
+            }
           }
           &-shape {
             width: 8rem;
@@ -316,6 +324,10 @@
             clip-path: circle(50% at 50% 50%);
             -webkit-clip-path: circle(50% at 50% 50%);
             transform: translateX(-1rem) skew(7deg, 0);
+            @include max-mq($mb) {
+              float: none;
+              transform: translateX(0) skew(0, 0);
+            }
             &-image {
               height: 100%;
               transform: translateX(-4rem) scale(1.4);

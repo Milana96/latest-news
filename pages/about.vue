@@ -1,14 +1,25 @@
 <template>
   <div>
-    <div class="home-page">
-      <img class="logo" src="~/assets/images/logo.png" alt="tech-logo" />
-      <section class="intro">
-        <h1 class="tech ui-margin-b-small">Find aobut us!</h1>
-        <p class="intro-text">
-          The latest tech news about the world's best (and sometimes worst)
-          hardware, apps, and much more.
-        </p>
-      </section>
+    <div class="about">
+      <div class="about-section-left">
+      
+      </div>
+      <div class="about-intro">
+        <div class="about-intro-background">
+            <img src="~/assets/images/about-intro.jpg" alt="" />
+        </div>
+        <div class="about-intro-text">
+          <h1 class="tech ui-margin-b-small">Find about us!</h1>
+          <p>
+            Our original editorial insight was that technology had migrated from
+            the far fringes of the culture to the absolute center as mobile
+            technology created a new generation of digital consumers. Now, we
+            live in a dazzling world of screens that has ushered in revolutions
+            in media, transportation, and science. The future is arriving faster
+            than ever.
+          </p>
+        </div>
+      </div>
     </div>
     <section class="home-page-about">
       <div class="home-page-about-row">
