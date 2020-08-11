@@ -90,6 +90,19 @@ const auth = {
         localStorage.removeItem("token");
         localStorage.removeItem("tokenExpiration");
       }
+    },
+    resetPassword(resetEmail) {
+      console.log(resetEmail);
+      const authResetUrl =
+        "https://identitytoolkit.googleapis.com/v1/accounts:resetPassword?key=" +
+        process.env.fbAPIKey;
+      return axios
+        .post(authResetUrl, resetEmail)
+        .then(this.$router.push("/admin"))
+
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };

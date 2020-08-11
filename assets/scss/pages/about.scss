@@ -20,28 +20,28 @@
     height: 100%;
     background-color: $primary_theme_color;
     &-background {
-        position: absolute;
-        left: 100px;
+      position: absolute;
+      left: 100px;
+      top: 50px;
+      @include max-mq($ls) {
         top: 50px;
+        left: 0;
+      }
+      @include max-mq($mb) {
+        top: 0;
+      }
+      img {
+        display: block;
+        width: 400px;
+        height: 450px;
         @include max-mq($ls) {
-            top: 50px;
-            left: 0;
+          height: 350px;
         }
         @include max-mq($mb) {
-            top: 0;
+          width: 250px;
+          height: 280px;
         }
-        img {
-            display: block;
-            width: 400px;
-            height: 450px;
-            @include max-mq($ls) {
-                height: 350px;
-            }
-            @include max-mq($mb) {
-                width: 250px;
-                height: 280px;
-            }
-          }
+      }
     }
     &-text {
       width: 600px;
@@ -52,19 +52,19 @@
       color: $white;
       text-align: center;
       z-index: 99;
-        @include max-mq($sm) {
-            width: unset;
-            height: unset;
+      @include max-mq($sm) {
+        width: unset;
+        height: unset;
+      }
+      @include max-mq($mb) {
+        background-color: rgba(255, 113, 47, 0.3);
+        h1 {
+          font-size: 18px;
         }
-        @include max-mq($mb) {
-            background-color: rgba(255, 113, 47, 0.3);
-            h1 {
-                font-size: 18px;
-            }
-            p {
-                font-size: 14px;
-            }
+        p {
+          font-size: 14px;
         }
+      }
       h1 {
         text-align: left;
         color: $dark_grey;
@@ -79,13 +79,67 @@
 }
 
 .home-page-about {
-    &-row {
-        .col-1-of-2 {
-            @include max-mq($sm) {
-                flex: 0 0 100%;
-            }
-        }
+  &-row {
+    .col-1-of-2 {
+      @include max-mq($sm) {
+        flex: 0 0 100%;
+      }
     }
+  }
 }
 
+//Subscribe
+#subscribe {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 4em 2em;
+  background: $primary_theme_color;
+  color: white;
+  z-index: 99999;
+  #signUp {
+    color: white;
+    h6 {
+      color: white;
+      font-size: 1em;
+    }
+    .input {
+      background: transparent;
+      margin-top: 2em;
+      label,
+      input {
+        background: transparent;
+        color: $primary_theme_color;
+      }
+    }
+    button {
+      width: 120px;
+      background: $primary_theme_color;
+      color: white;
+    }
+  }
+  #close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: $primary_theme_color;
+      svg {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 24px;
+        cursor: pointer;
+      }
+  }
+}
 
+//popup when you reset password
+.resetEmail {
+  // top: 20% !important;
+}
