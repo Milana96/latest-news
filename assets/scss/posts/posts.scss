@@ -105,6 +105,7 @@
     backface-visibility: hidden;
     transition: all 0.8s ease;
     border-radius: 3px;
+    overflow: hidden;
       @include max-mq($sm) {
         position: relative;
       }

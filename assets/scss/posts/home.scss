@@ -45,13 +45,13 @@
       @include max-mq($mb) {
         left: 0;
       }
-        &.active {
-          opacity: 1;
-          animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both;
-        }
+      &.active {
+        opacity: 1;
+        animation: shake 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+      }
     }
     .software {
-      background-image: url('~assets/images/software.png');
+      background-image: url("~assets/images/software.png");
       width: 500px;
       height: 500px;
       top: 0;
@@ -71,7 +71,6 @@
         left: -1rem;
       }
     }
-   
   }
   .intro {
     position: relative;
@@ -95,9 +94,9 @@
       color: $dark_grey;
       text-align: left;
       p {
-          font-size: 18px;
-          font-weight: 400;
-          letter-spacing: 1px;
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 1px;
       }
     }
     &-text {
@@ -111,16 +110,19 @@
       cursor: pointer;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-        @include max-mq($ls) {
-          font-size: 65px;
-        }
-        @include max-mq($sm) {
-          top: 100px;
-          left: 50px;
-        }
-        @include max-mq($mb) {
-          left: 15px;
-        }
+      @include max-mq($ls) {
+        font-size: 65px;
+      }
+      @include max-mq($sm) {
+        top: 100px;
+        left: 50px;
+      }
+      @include max-mq($mb) {
+        left: 15px;
+      }
+      @include max-mq($xs) {
+        font-size: 56px;
+      }
       &::before {
         content: "";
         z-index: -2;
@@ -241,12 +243,16 @@
               margin-top: 1rem;
               position: relative;
             }
+            @include max-mq($xs) {
+              width: 150px;
+              height: 150px;
+            }
             &-p1 {
               left: 0;
               top: 0;
-                @include max-mq($sm) {
-                  left: 1rem;
-                }
+              @include max-mq($sm) {
+                left: 1rem;
+              }
             }
             &-p2 {
               left: 25rem;
@@ -255,7 +261,7 @@
                 left: 0;
                 top: 17rem;
               }
-              
+
               @include max-mq($ls) {
                 left: 1rem;
               }
@@ -267,11 +273,11 @@
             &-p3 {
               left: 25%;
               top: 3rem;
-                @include max-mq($mb) {
-                  left: 35%;
-                  top: 3rem;
-                  position: absolute;
-                }
+              @include max-mq($mb) {
+                left: 35%;
+                top: 3rem;
+                position: absolute;
+              }
             }
             &:hover {
               outline: 0.4rem solid $primary_theme_color;
@@ -357,7 +363,7 @@
 
 .img-wrap.software.softwareActive {
   opacity: 1;
-  animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both;
+  animation: shake 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   background-image: url("~assets/images/software.png");
 }
 
