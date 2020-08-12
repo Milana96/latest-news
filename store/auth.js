@@ -90,6 +90,20 @@ const auth = {
         localStorage.removeItem("token");
         localStorage.removeItem("tokenExpiration");
       }
+    },
+    resetPassword(vuexContext, resetData) {
+      const resetURL =
+        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBmgklka-DYxF9KZfkcmW4KNR0O-f8jS0g";
+      return axios
+        .post(resetURL, {
+          requestType: "PASSWORD_RESET",
+          email: resetData
+        })
+        .then(result => {
+          console.log("Success");
+          this.$router.push("/admin");
+        })
+        .catch(e => console.log(e));
     }
   }
 };

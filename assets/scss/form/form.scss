@@ -1,6 +1,9 @@
 @import "../base/variables";
 .container {
   position: relative;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background-color: #1f2029;
   .bg-video {
     position: absolute;
     top: 0;
@@ -8,7 +11,7 @@
     height: 100%;
     width: 100%;
     z-index: -1;
-    opacity: 0.15;
+    background-color: rgba($color: $dark_grey, $alpha: 0.15);
     &-content {
       width: 100%;
       height: 100%;
@@ -16,22 +19,139 @@
     }
   }
   &-inner {
-    width: 60%;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
-    padding: 5rem;
+    padding: 3rem;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: rgba($color: $dark_grey, $alpha: .3);
-    transform: skew(-7deg, 0);
-    & > * {
-      transform: skew(7deg, 0);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include max-mq($xs) {
+      padding: 3rem 1rem;
+    }
+    .auth-label {
+      margin-bottom: 20px;
+      span {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.6);
+        &:not(:first-child) {
+          padding-left: 10px;
+        }
+        @include max-mq($xs) {
+          font-size: 16px;
+        }
+      }
+    }
+    [type="checkbox"]:checked,
+    [type="checkbox"]:not(:checked) {
+      position: absolute;
+      left: -9999px;
+    }
+
+    .checkbox:checked + label,
+    .checkbox:not(:checked) + label {
+      position: relative;
+      display: block;
+      text-align: center;
+      width: 60px;
+      height: 16px;
+      border-radius: 8px;
+      padding: 0;
+      margin: 10px auto;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .checkbox:checked + label:before,
+    .checkbox:not(:checked) + label:before {
+      position: absolute;
+      display: block;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      color: rgba(255, 255, 255, 0.6);
+      background-color: $primary_theme_color;
+      font-family: FontAwesome;
+      content: "";
+      z-index: 20;
+      top: -10px;
+      left: -10px;
+      line-height: 36px;
+      text-align: center;
+      font-size: 24px;
+      transition: all 0.5s ease;
+    }
+
+    .checkbox:checked + label:before {
+      transform: translateX(44px) rotate(-270deg);
+    }
+
+    .checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+      transform: rotateY(180deg);
+    }
+
+    .card-3d-wrap {
+      position: relative;
+      width: 440px;
+      max-width: 100%;
+      height: 400px;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      perspective: 800px;
+      margin-top: 60px;
+
+      .card-3d-wrapper {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        transition: all 600ms ease-out;
+        .front,
+        .back {
+          width: 100%;
+          height: 100%;
+          background-color: #2a2b38;
+          background-image: url("~assets/images/pat.svg");
+          background-position: bottom center;
+          background-repeat: no-repeat;
+          background-size: 300%;
+          position: absolute;
+          border-radius: 6px;
+          left: 0;
+          top: 0;
+          -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+          -webkit-backface-visibility: hidden;
+          -moz-backface-visibility: hidden;
+          -o-backface-visibility: hidden;
+          backface-visibility: hidden;
+        }
+        .back {
+          transform: rotateY(180deg);
+        }
+      }
     }
     &-form {
-      width: 450px;
+      width: 100%;
       height: 100%;
-      @include max-mq($sm) {
-        width: 100%;
+      padding: 3rem 2rem;
+      @include max-mq($xs) {
+        padding: 1rem;
+      }
+      .sign-log {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 24px;
+        font-weight: 800;
+      }
+      .forget-password {
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
       }
     }
     .input-control {
@@ -39,7 +159,6 @@
       label {
         display: block;
         font-weight: bold;
-        margin-bottom: 10px;
       }
       input,
       textarea {
@@ -57,14 +176,6 @@
         }
       }
     }
-    &-image {
-      height: 897px;
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform: skew(0, 0);
-      opacity: .15;
-    }
     .auth {
       height: 357px;
     }
@@ -73,16 +184,18 @@
 
 .button {
   font: inherit;
-  background-color: $dark_grey;
+  background-color: $primary_theme_color;
   color: white;
+  margin-top: 20px;
   padding: 10px 40px;
   cursor: pointer;
   border: none;
   border-radius: 15px;
   text-transform: uppercase;
+  box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
   &:hover,
   &:active {
-    background-color: $primary_theme_color;
+    background-color: $dark_grey;
     transition: all 0.2s ease-in;
   }
 }
