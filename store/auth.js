@@ -91,18 +91,19 @@ const auth = {
         localStorage.removeItem("tokenExpiration");
       }
     },
-    resetPassword(resetEmail) {
-      console.log(resetEmail);
-      const authResetUrl =
-        "https://identitytoolkit.googleapis.com/v1/accounts:resetPassword?key=" +
-        process.env.fbAPIKey;
+    resetPassword(vuexContext, resetData) {
+      const resetURL =
+        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBmgklka-DYxF9KZfkcmW4KNR0O-f8jS0g";
       return axios
-        .post(authResetUrl, resetEmail)
-        .then(this.$router.push("/admin"))
-
-        .catch(err => {
-          console.log(err);
-        });
+        .post(resetURL, {
+          requestType: "PASSWORD_RESET",
+          email: resetData
+        })
+        .then(result => {
+          console.log("Success");
+          this.$router.push("/admin");
+        })
+        .catch(e => console.log(e));
     }
   }
 };
