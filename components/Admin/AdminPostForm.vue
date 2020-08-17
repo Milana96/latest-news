@@ -25,8 +25,9 @@
           placeholder="Content"
           >Content</AppControlInput
         >
-        <AppControlInput v-model="editedPost.image" placeholder="Thumbnail link">
+        <AppControlInput class="thumbnail" control-type="file" v-model="editedPost.image">
           <span> <fa :icon="['fas', 'image']"/></span>
+          <span class="choose-img">Click here to choose image</span>
         </AppControlInput>
         <AppControlInput
           class="textareaLabel"
