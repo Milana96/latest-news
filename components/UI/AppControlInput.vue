@@ -7,6 +7,13 @@
       v-bind="$attrs"
       @input="$emit('input', $event.target.value)"
     />
+    <input
+      v-if="controlType === 'file'"
+      type="file"
+      :value="value"
+      v-bind="$attrs"
+      @input="$emit('input', $event.target.value)"
+    />
     <textarea
       v-if="controlType === 'textarea'"
       rows="10"
@@ -31,5 +38,3 @@ export default {
   }
 };
 </script>
-
-

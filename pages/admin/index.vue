@@ -3,17 +3,10 @@
     <div class="admin-inner">
       <section class="admin-inner-intro">
         <h1 class="tech ui-margin-b-small">Get the latest tech news!</h1>
-        <div class="admin-inner-intro-text">
-          The latest tech news about the world's best (and sometimes worst)
-          hardware, apps, and much more. From top companies like Google and
-          Apple to tiny startups vying for your attention, Verge Tech has the
-          latest in what matters in technology daily.
-        </div>
-        <h1 class="tech">ADMIN</h1>
-        <p class="create-post">
+        <h2 class="create-post">
           This is the place where you can write the latest tech news about the
           hardware, apps and much more.
-        </p>
+        </h2>
         <div class="admin-buttons">
           <AppButton @click="$router.push('/admin/new-post')"
             >Create post</AppButton
