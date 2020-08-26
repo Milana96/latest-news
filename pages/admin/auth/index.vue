@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container container-auth">
     <div class="container-inner">
       <h2 class="auth-label"><span>Log In</span><span>Sign Up</span></h2>
       <input type="checkbox" class="checkbox" name="reg-log" id="reg-log" />
