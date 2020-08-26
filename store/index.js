@@ -122,8 +122,15 @@ const createStore = () => {
           })
           .catch(e => console.log(e));
       },
-      //pagination
-      setPages(vuexContext) {
+      sendContactData({commit}, contactData) {
+        console.log(contactData);
+        axios.post("https://latest-news-f9dc0.firebaseio.com/contact.json", contactData)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
       }
     },
     getters: {

@@ -21,17 +21,18 @@
                     for us to reply to your request fast and with relevant
                     information. Thank you in advance.
                   </p>
-                  <AppControlInput type="input" v-model="contactData.email" placeholder="Name"
+                  <p class="success-contact" v-if="success">Your message was successfully sent!</p>
+                  <AppControlInput v-if="!success" type="input" v-model="contactData.name" placeholder="Name"
                     ></AppControlInput
                   >
-                  <AppControlInput type="email" v-model="contactData.email" placeholder="Email address"
+                  <AppControlInput v-if="!success" type="email" v-model="contactData.email" placeholder="Email address"
                     ></AppControlInput
                   >
-                  <AppControlInput type="textarea" v-model="contactData.message" placeholder="Message"
+                  <AppControlInput v-if="!success" type="textarea" v-model="contactData.message" placeholder="Message"
                     ></AppControlInput
                   >
 
-                  <AppButton type="submit">
+                  <AppButton v-if="!success" type="submit">
                     Send
                   </AppButton>
                 </form>
@@ -64,11 +65,16 @@ export default {
         name: "",
         email: "",
         message: ""
-      }
+      },
+      success: false
     };
   },
   methods: {
-    onSubmit() {}
+    onSubmit() {
+        this.$store.dispatch("sendContactData", this.contactData).then(() => {
+            this.success = true;
+        });
+    }
   }
 };
 </script>
