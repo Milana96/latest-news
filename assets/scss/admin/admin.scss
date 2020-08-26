@@ -1,5 +1,8 @@
 @import "../base/index.scss";
 
+.container-auth {
+  max-width: 100% !important;
+}
 .admin {
   &-inner {
     background-image: url("~assets/images/admin-intro.jpg");

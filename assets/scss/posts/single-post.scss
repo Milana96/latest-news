@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  flex: 0 0 70%;
+  flex: 0 0 100%;
     @include max-mq($sm) {
       flex: 0 0 100%;
       width: 100%;
@@ -34,12 +34,9 @@
     padding-bottom: 10px;
   }
   &-image {
-    width: 600px;
-    height: 600px;
+    width: 100%;
+    height: auto;
     display: block;
-      @include max-mq($mb) {
-        width: 100%;
-      }
   }
   &-content {
     text-align: justify;

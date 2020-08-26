@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     otherPosts() {
-      return this.$store.getters.loadedPosts;
+      return this.$store.state.loadedPosts.filter( el => el.id != this.$route.params.id).slice(0, 2);
     }
   },
   asyncData(context) {
