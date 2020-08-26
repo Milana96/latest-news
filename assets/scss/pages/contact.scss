@@ -1,0 +1,70 @@
+.container-contact {
+  max-width: 100% !important;
+  padding: 0 !important;
+  height: auto !important;
+  &-inner {
+    width: 100%;
+    height: 100%;
+    &-form-wrapper {
+      position: relative;
+      height: auto;
+      padding: 5em 0;
+      @include max-mq($mb) {
+        padding: 0;
+      }
+      .intro-background {
+        position: unset;
+        display: inline-block;
+        width: 40%;
+        max-width: 775px;
+        z-index: 2;
+        @include max-mq($mb) {
+          width: 100%;
+        }
+        img {
+          display: block;
+          width: 100%;
+          height: 600px;
+          @include max-mq($sm) {
+            height: 400px;
+          }
+        }
+      }
+      .about-intro-text {
+        height: auto;
+        width: 55%;
+        display: inline-block;
+        margin-left: -70px;
+        z-index: 1;
+        @include max-mq($mb) {
+          width: 100%;
+          margin-left: 0;
+          background-color: rgba(255, 113, 47, 0.8);
+        }
+        .contact-form-intro {
+          padding: 1.5em 0;
+          color: $dark_grey;
+        }
+        form {
+          padding: 5em;
+          @include max-mq($sm) {
+            padding: 1em;
+          }
+        }
+      }
+    }
+    &-intro {
+      width: 100%;
+      height: 600px;
+      background-image: url("~assets/images/contact-intro.jpg");
+      background-position: bottom center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    &-form {
+    }
+    &-map {
+      width: 100%;
+    }
+  }
+}
