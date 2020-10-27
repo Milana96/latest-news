@@ -73,6 +73,7 @@ export default {
     this.postToRate = this.$store.state.loadedPosts.filter(
       post => post.id == this.$route.params.id
     );
+    console.log(this.postToRate);
     this.rated = this.postToRate[0].rate;
   },
   methods: {

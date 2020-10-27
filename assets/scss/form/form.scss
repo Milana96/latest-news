@@ -191,6 +191,9 @@ form {
     background-color: $dark_grey;
     transition: all 0.2s ease-in;
   }
+  &:disabled {
+    background-color: $light_grey;
+  }
 }
 .inverted {
   background-color: white;

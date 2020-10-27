@@ -72,8 +72,10 @@ const auth = {
           .find(c => c.trim().startsWith("expirationDate="))
           .split("=")[1];
       } else {
-        token = localStorage.getItem("token");
-        expirationDate = localStorage.getItem("tokenExpiration");
+        if (process.client) {
+          token = localStorage.getItem("token");
+          expirationDate = localStorage.getItem("tokenExpiration");
+        }
       }
       if (new Date().getTime() > Number.parseInt(expirationDate) || !token) {
         console.log("No token or invalid token");

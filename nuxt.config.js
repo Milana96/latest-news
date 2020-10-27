@@ -42,7 +42,11 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ["~plugins/core-components.js", "~plugins/date-filter.js"],
+  plugins: [
+    "~plugins/core-components.js",
+    "~plugins/date-filter.js",
+    "~plugins/vee-validate.js"
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -81,6 +85,7 @@ export default {
       plugins: {
         "postcss-custom-properties": false
       }
-    }
+    },
+    transpile: ["vee-validate/dist/rules"]
   }
 };
